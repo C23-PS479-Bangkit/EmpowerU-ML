@@ -1,0 +1,16 @@
+# File: cloudbuild.yaml
+steps:
+    # build the container image
+  - id: "build image"
+    name: "gcr.io/cloud-builders/docker"
+    entrypoint: "bash"
+    args: ["-c", "docker build -t gcr.io/capstone-project-387306/empoweru-ml ."]
+    #push image
+  - id: "push image"
+    name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/capstone-project-387306/empoweru-ml ."]
+    # deploy to Cloud Run
+  - name: "gcr.io/cloud-builders/gcloud"
+    args: ['run', 'deploy', 'empoweru-ml', '--image', 'gcr.io/capstone-project-387306/empoweru-ml', '--region', 'asia-southeast2', '--platform', 'managed', '--allow-unauthenticated']
+options:
+  logging: CLOUD_LOGGING_ONLY

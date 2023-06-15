@@ -2,3 +2,4 @@ venv
 .vscode
 __pycache__
 model/model.tflite
+gcloud-service-key.json

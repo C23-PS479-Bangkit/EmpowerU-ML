@@ -33,3 +33,9 @@ docker build -t empoweru-ml .
 ```
 docker run -dp 3000:3000 empoweru-ml
 ```
+## Push to the Google Artifact Registry
+```
+docker login -u _json_key --password-stdin https://asia-southeast2-docker.pkg.dev < gcloud-service-key.json
+docker tag empoweru-ml asia-southeast2-docker.pkg.dev/capstone-project-387306/empoweru-machine-learning/empoweru-ml
+docker push asia-southeast2-docker.pkg.dev/capstone-project-387306/empoweru-machine-learning/empoweru-ml
+```
