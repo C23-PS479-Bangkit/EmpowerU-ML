@@ -38,7 +38,7 @@ async def predict(comment: Comment):
 
     # return result
     result = int(result > 0.5)
-    return JSONResponse(content=result)
+    return {"impression" : result}
 
 
 @app.on_event("startup")
